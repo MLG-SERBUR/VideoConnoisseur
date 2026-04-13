@@ -35,8 +35,8 @@ def main():
     print("\nCreating directories...")
     for dir_name in dirs_to_create:
         dir_path = Path(dir_name)
-        dir_path.mkdir(exist_ok=True)
-        print(f"  ✓ Created: {dir_path}")
+        dir_path.mkdir(parents=True, exist_ok=True)
+        print(f"  [+] Created: {dir_path}")
     
     # Create videos directory with sample structure
     videos_dir = Path('videos')
@@ -53,7 +53,7 @@ def main():
     print("\nNext Steps:")
     print("1. Install dependencies: uv sync")
     print("2. Start Ollama and run: ollama run llava")
-    print("3. Start the application: python app.py")
+    print("3. Start the application: uv run app.py")
     print("4. Access the web UI at: http://localhost:5000")
 
 if __name__ == '__main__':

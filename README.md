@@ -42,7 +42,8 @@ ollama run llava
 ### 4. Setup Application
 ```bash
 # Create necessary directories
-python setup.py
+# Create necessary directories
+uv run setup.py
 
 # Or manually create directories:
 mkdir videos models temp_processing .kilo/agent
@@ -50,12 +51,12 @@ mkdir videos models temp_processing .kilo/agent
 
 ### 5. Run the Application
 ```bash
-python app.py
+uv run app.py
 ```
 
 ## Usage
 
-1. **Start the Application**: Run `python app.py`
+1. **Start the Application**: Run `uv run app.py`
 2. **Access Web UI**: Open http://localhost:5000 in your browser
 3. **Upload Videos**: Place video files in the `videos/` directory or use the upload interface
 4. **Vote on Videos**: Click thumbs up/down to score videos

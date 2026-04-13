@@ -1,1 +1,0 @@
-Environment setup complete. VideoConnoisseur application configured and ready to process 64 videos from D:\user\Videos\NVIDIA. Run: python start_app.py

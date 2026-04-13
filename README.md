@@ -2,11 +2,6 @@
 
 A web-based, self-adjusting video processing application with AI-powered scoring and personalized feeds.
 
-## Environment Status
-- Videos: D:\user\Videos\NVIDIA (64 files)
-- Ready: python start_app.py
-- Server: http://localhost:5000
-
 ## Features
 
 - **AI Pre-Processing Pipeline**: Automatic video analysis using audio transcription and vision models
@@ -55,12 +50,12 @@ mkdir videos models temp_processing .kilo/agent
 
 ### 5. Run the Application
 ```bash
-python start_app.py
+python app.py
 ```
 
 ## Usage
 
-1. **Start the Application**: Run `python start_app.py`
+1. **Start the Application**: Run `python app.py`
 2. **Access Web UI**: Open http://localhost:5000 in your browser
 3. **Upload Videos**: Place video files in the `videos/` directory or use the upload interface
 4. **Vote on Videos**: Click thumbs up/down to score videos
@@ -97,12 +92,12 @@ VideoConnoisseur/
 ├── preprocessing.py    # Video processing logic
 ├── models.py          # ML model management
 ├── config.py          # Configuration settings
-├── start_app.py        # Database initialization + server startup
-├── videos.db           # SQLite database
-├── weights.json        # Feature weights (auto-generated)
-├── liked_videos.txt    # Paths of liked videos
+├── setup.py          # Setup script
+├── videos.db          # SQLite database
+├── weights.json       # Feature weights (auto-generated)
+├── liked_videos.txt   # Paths of liked videos
 ├── disliked_videos.txt # Paths of disliked videos
-└── videos/             # Video storage directory
+└── videos/            # Video storage directory
 ```
 
 ## API Endpoints
@@ -138,14 +133,14 @@ Ensure Ollama is running: `ollama serve`
 Pull the model: `ollama run llava`
 
 ### Out of Memory
-1. Reduce `MODEL_SIZE` in config.py
-2. Increase `FRAME_INTERVAL` to process fewer frames
-3. Restart application to clear GPU memory
+- Reduce `MODEL_SIZE` in config.py
+- Increase `FRAME_INTERVAL` to process fewer frames
+- Restart application to clear memory
 
 ### No Videos Processed
-1. Check video format compatibility (mp4, mov, avi, mkv, webm)
-2. Verify videos directory contains files
-3. Check application logs for processing errors
+- Check video format compatibility (mp4, mov, avi, mkv, webm)
+- Verify videos directory contains files
+- Check application logs for processing errors
 
 ## License
 

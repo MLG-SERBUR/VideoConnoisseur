@@ -1,0 +1,139 @@
+# VideoConnoisseur - Setup Script
+
+This script sets up the VideoConnoisseur application with all necessary dependencies.
+
+## Prerequisites
+
+- Python 3.8+
+- uv package manager (recommended)
+- Ollama installed and running
+- CUDA-compatible GPU (recommended for faster-whisper)
+
+## Installation Steps
+
+### 1. Create Virtual Environment
+
+```bash
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+### 2. Install Dependencies
+
+```bash
+uv sync
+```
+
+### 3. Start Ollama and Pull Models
+
+```bash
+# Start Ollama service
+ollama serve
+
+# In a separate terminal, pull the vision model
+ollama run llava
+
+# Optionally, pull faster-whisper model
+ollama pull faster-whisper:base
+```
+
+### 4. Create Required Directories
+
+```bash
+mkdir -p videos models temp_processing .kilo/agent
+```
+
+### 5. Run the Application
+
+```bash
+python app.py
+```
+
+The application will start on http://0.0.0.0:5000
+
+## Alternative Installation with pip
+
+If you prefer using pip instead of uv:
+
+```bash
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+## Database Setup
+
+The application uses SQLite and will automatically create the database file (`videos.db`) on first run.
+
+## Configuration
+
+Edit `config.py` to customize:
+- API ports and hosts
+- Frame extraction settings
+- Model parameters
+- File paths
+
+## Usage
+
+1. Place your video files in the `videos/` directory
+2. Access the web interface at http://localhost:5000
+3. Upload videos or let the application monitor the videos directory
+4. Vote on videos to train the AI model
+
+## Troubleshooting
+
+### Ollama Connection Error
+Ensure Ollama is running: `ollama serve`
+
+### Model Not Found
+Pull the model: `ollama run llava`
+
+### Out of Memory
+- Reduce `MODEL_SIZE` in config.py
+- Increase `FRAME_INTERVAL` to process fewer frames
+- Restart application to clear memory
+
+### No Videos Processed
+- Check video format compatibility (mp4, mov, avi, mkv, webm)
+- Verify videos directory contains files
+- Check application logs for processing errors
+
+## Project Structure
+
+```
+VideoConnoisseur/
+├── app.py              # Main Flask application
+├── preprocessing.py    # Video processing logic
+├── models.py          # ML model management
+├── config.py          # Configuration settings
+├── setup.py           # Setup script
+├── requirements.txt   # Python dependencies
+├── videos.db          # SQLite database (auto-created)
+├── weights.json       # Feature weights (auto-created)
+├── liked_videos.txt   # Paths of liked videos (auto-created)
+├── disliked_videos.txt # Paths of disliked videos (auto-created)
+├── videos/            # Video storage directory
+├── models/            # Model storage directory
+└── templates/         # HTML templates
+    ├── index.html
+    ├── styles.css
+    └── script.js
+```
+
+## Dependencies
+
+- flask: Web framework
+- flask-cors: Cross-origin resource sharing
+- faster-whisper: Audio transcription
+- ollama: Vision model inference
+- torch: Deep learning framework
+- scikit-learn: Machine learning
+- opencv-python: Video processing
+- numpy: Numerical computing
+
+## License
+
+MIT License - Free to use and modify

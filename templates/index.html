@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoConnoisseur - TikTok/Reels Style Video App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Video Player -->
+        <div id="video-player-container" class="video-player-container">
+            <video id="video-player" class="video-player" controls muted playsinline></video>
+            
+            <!-- Overlay Controls -->
+            <div id="video-overlay" class="video-overlay">
+                <div class="video-controls">
+                    <button id="btn-thumbs-up" class="control-btn thumbs-up" title="Keep Video">
+                        <span class="icon">👍</span>
+                        <span class="label">Keep</span>
+                    </button>
+                    <button id="btn-thumbs-down" class="control-btn thumbs-down" title="Junk Video">
+                        <span class="icon">👎</span>
+                        <span class="label">Junk</span>
+                    </button>
+                </div>
+                
+                <!-- Loading Indicator -->
+                <div id="loading-indicator" class="loading-indicator">
+                    <div class="spinner"></div>
+                    <span>Analyzing...</span>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div id="progress-bar" class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+            </div>
+            
+            <!-- Skip Button -->
+            <button id="btn-skip" class="skip-btn" title="Skip to Next">⏭ Skip</button>
+        </div>
+        
+        <!-- Sidebar/Info Panel -->
+        <div id="info-panel" class="info-panel">
+            <div class="panel-header">
+                <h2>Video Info</h2>
+                <span id="video-counter" class="video-counter">Video 1 of 0</span>
+            </div>
+            
+            <div class="panel-content">
+                <div class="video-filename" id="video-filename">Loading...</div>
+                
+                <div class="features-section">
+                    <h3>Features Detected</h3>
+                    <div id="features-list" class="features-list">
+                        <!-- Features will be populated here -->
+                    </div>
+                </div>
+                
+                <div class="score-section">
+                    <h3>Score: <span id="video-score" class="score-value">0</span>/100</h3>
+                    <div class="score-bar">
+                        <div id="score-bar-fill" class="score-bar-fill"></div>
+                    </div>
+                </div>
+                
+                <div class="weights-section">
+                    <h3>Current Weights</h3>
+                    <div id="weights-display" class="weights-display">
+                        <!-- Weights will be populated here -->
+                    </div>
+                </div>
+                
+                <div class="history-section">
+                    <h3>History</h3>
+                    <div id="history-list" class="history-list">
+                        <!-- History will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hidden File Input -->
+    <input type="file" id="file-input" accept="video/*" style="display: none;">
+    
+    <script src="script.js"></script>
+</body>
+</html>
